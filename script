@@ -99,6 +99,16 @@ end)
 Section:NewButton("Inf Yield", "Admin gui xxxxx", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
+Section2:NewButton("Original speed and 200 stamina", "", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+local className = "Part"
+local parent = game.Workspace.Live[Player]
+local part = Instance.new(className, parent)
+
+game.Workspace.Live[Player]:WaitForChild("Part").Name = "Original"
+game.Workspace.Live[Player].Stamina.Max = 200
+end)
 Section2:NewButton("Puts hestia in ur folder", "Hestia perks ate", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
