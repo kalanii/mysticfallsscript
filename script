@@ -99,7 +99,7 @@ end)
 Section:NewButton("Inf Yield", "Admin gui xxxxx", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
-Section2:NewButton("Original speed and 200 stamina", "", function()
+Section2:NewButton("Original speed and 200 stamina", "a", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
 local className = "Part"
