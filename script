@@ -12,6 +12,12 @@ end)
 Section:NewButton("Tp to hotel hira!!!", "secret room x", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-377.636353, -267.451416, -4889.46582, 0.997956812, -0.0327007547, -0.0548902005, 0.033344958, 0.99938494, 0.0108610736, 0.0545012802, -0.0126692066, 0.998433352)
 end)
+Section:NewButton("loopdelete venom", "x", function()
+while true do
+local Player = game.Players.LocalPlayer.Name
+game.Workspace[Player].WerewolfVenom:Destroy()
+end
+end)
 Section:NewButton("DarkDex", "if u dont know what it is, don't use it", function()
     -- Cloneref support (adds support for JJsploit/Temple/Electron and other sploits that don't have cloneref or really shit versions of it.)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/CloneRef.lua", true))()
@@ -120,6 +126,15 @@ local parent = game.Workspace.Live[Player]
 local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Hestia"
+end)
+Section:NewButton("See ghosts", "yah", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+local className = "Part"
+local parent = game.Workspace.Live[Player]
+local part = Instance.new(className, parent)
+
+game.Workspace.Live[Player]:WaitForChild("Part").Name = "SeeGhosts"
 end)
 Section2:NewButton("Puts astralis in ur folder (no perks)", "astralis perks didn't eat", function()
 local Player = game:GetService("Players").LocalPlayer.Name
@@ -360,7 +375,7 @@ l__LocalPlayer__5.Chatted:Connect(function(p1)
 			return;
 		end;
 	end;
-	u2 = "MagicVenom";
+	u2 = "Magic";
 end);
 local function u8()
 	local l__next__14 = next;
