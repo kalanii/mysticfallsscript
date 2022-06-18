@@ -91,10 +91,8 @@ while true do
 end)
 Section:NewButton("Immortal for witches", "So you won't die to random flops x", function()
     local Player = game.Players.LocalPlayer.Name
-    game:GetService"RunService".RenderStepped:Connect(function()
         local comm = game.Workspace.Live[Player].Immortality.Comm
         comm:Destroy()
-    end)
 end)
 Section:NewButton("Inf Yield", "Admin gui xxxxx", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -107,7 +105,9 @@ local parent = game.Workspace.Live[Player]
 local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Original"
-game.Workspace.Live[Player].Stamina.Max = 200
+local staminaa = game:GetService("Workspace").Live[Player].Stamina.Max
+staminaa.Value = 200
+
 end)
 Section2:NewButton("Puts hestia in ur folder", "Hestia perks ate", function()
 local Player = game:GetService("Players").LocalPlayer.Name
