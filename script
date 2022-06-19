@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Mystic Falls gui made by hira and kalani ik i ate that purr x", "Serpent")
+local Window = Library.CreateLib("Mystic Falls gui made by hira and kalani ik i ate that purr x", "Ocean")
 local Tab = Window:NewTab("Main")
 local Tab2 = Window:NewTab("Factions")
 local Tab3 = Window:NewTab("Keybinds")
@@ -9,12 +9,69 @@ local Section = Tab:NewSection("Main stuff purrr")
 Section:NewButton("Antiban", "Protects you from autoban x", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kwaibanana/OpenSource/772ff4369644973f4fd6da1fcec66f4f5f98f76c/anti%20ban", true))()
 end)
+Section:NewButton("get werewolf bite when ur a vamp", "read the title x", function()
+    -- Decompiled with the Synapse X Luau decompiler.
+
+local l__ReplicatedStorage__1 = game:GetService("ReplicatedStorage");
+local l__Players__2 = game:GetService("Players");
+local l__LocalPlayer__3 = l__Players__2.LocalPlayer;
+local l__Character__4 = l__LocalPlayer__3.Character;
+local l__mouse__1 = l__LocalPlayer__3:GetMouse();
+local l__Energy__2 = l__Character__4:WaitForChild("Energy");
+local u3 = require(l__ReplicatedStorage__1.Check);
+local u4 = false;
+local function u5(p1)
+	local l__next__5 = next;
+	local v6, v7 = l__Players__2:GetPlayers();
+	while true do
+		local v8, v9 = l__next__5(v6, v7);
+		if not v8 then
+			break;
+		end;
+		v7 = v8;
+		if v9.Character and l__mouse__1.Target and (l__mouse__1.Target:IsDescendantOf(v9.Character) and v9:DistanceFromCharacter(l__Character__4.Head.Position) <= p1) then
+			return v9;
+		end;	
+	end;
+end;
+local l__Events__6 = l__ReplicatedStorage__1:WaitForChild("Events");
+local l__Humanoid__7 = l__Character__4:WaitForChild("Humanoid");
+game:GetService("UserInputService").InputBegan:Connect(function(p2, p3)
+	if not p3 and p2.KeyCode == Enum.KeyCode.T and not _G.Debounce and l__Energy__2.Value >= 50 and u3(l__Character__4) and not l__Character__4:FindFirstChild("Acting") and not u4 then
+		u4 = true;
+		_G.Debounce = true;
+		if not l__Character__4:FindFirstChild("Wolf") then
+			local v10 = u5(5);
+			if v10 and u3(v10.Character) then
+				l__Events__6.Werewolf:FireServer("Bite", { false, v10.Character });
+			else
+				_G.Debounce = false;
+				u4 = false;
+			end;
+		else
+			l__Events__6.Werewolf:FireServer("Bite", { true, true });
+			local v11 = l__Character__4.Head.Touched:Connect(function(p4)
+				local v12 = p4.Parent:FindFirstChild("Humanoid") or p4.Parent.Parent:FindFirstChild("Humanoid");
+				if v12 and v12 ~= l__Humanoid__7 then
+					l__Events__6.Werewolf:FireServer("Bite", { true, false, v12 });
+				end;
+			end);
+			wait(0.5);
+			v11:Disconnect();
+		end;
+		wait(2);
+		_G.Debounce = false;
+		u4 = false;
+	end;
+end);
+    end)
 Section:NewButton("Tp to hotel hira!!!", "secret room x", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-377.636353, -267.451416, -4889.46582, 0.997956812, -0.0327007547, -0.0548902005, 0.033344958, 0.99938494, 0.0108610736, 0.0545012802, -0.0126692066, 0.998433352)
 end)
 Section:NewButton("loopdelete venom", "x", function()
-while true do
-local Player = game.Players.LocalPlayer.Name
+    local Player = game.GetService("Players").LocalPlayer.Name
+    while true do
+
 game.Workspace[Player].WerewolfVenom:Destroy()
 end
 end)
@@ -904,3 +961,51 @@ game:GetService("ReplicatedStorage").Events.FilterText:InvokeServer(unpack(args)
 
 -- change rashma astralis to whatever u want and spawn as custom and boom ur name will be that. u have to rejoin each time u set a new one
 end)
+Section:NewTextBox("auto accept channel", "put in user to auto accept channels", function(txt2)
+ while true do
+local args = {
+    [1] = "Channel",
+    [2] = {
+        [1] = true,
+        [2] = game.Players[(txt2)].Character
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(1)
+local args = {
+    [1] = "Channel",
+    [2] = {
+        [1] = true,
+        [2] = game.Players[(txt2)].Character
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(1)
+end
+    end)
+Section:NewTextBox("autosend channels", "put in user to autosend channels", function(txt3)
+    while true do 
+    local args = {
+    [1] = "Magic",
+    [2] = {
+        [1] = "requestChanneling",
+        [2] = game.Players[(txt3)].Character
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(1)
+    local args = {
+    [1] = "Magic",
+    [2] = {
+        [1] = "requestChanneling",
+        [2] = game.Players[(txt3)].Character
+    }
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(1)
+end
+    end)
