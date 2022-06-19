@@ -226,6 +226,15 @@ local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Hestia"
 end)
+Section:NewButton("run like a vamp", "ate", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+local className = "Part"
+local parent = game.Workspace.Live[Player]
+local part = Instance.new(className, parent)
+
+game.Workspace.Live[Player]:WaitForChild("Part").Name = "Vampire"
+end)
 Section:NewButton("See ghosts", "yah", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
