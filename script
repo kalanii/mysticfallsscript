@@ -9,6 +9,69 @@ local Section = Tab:NewSection("Main stuff purrr")
 Section:NewButton("Antiban", "Protects you from autoban x", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kwaibanana/OpenSource/772ff4369644973f4fd6da1fcec66f4f5f98f76c/anti%20ban", true))()
 end)
+Section:NewButton("Siphon All energy", "", function()
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+end)Section:NewButton("Siphon All energy", "", function()
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+end)
 Section:NewButton("get werewolf bite when ur a vamp", "read the title x", function()
     -- Decompiled with the Synapse X Luau decompiler.
 
