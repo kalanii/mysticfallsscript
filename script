@@ -18,7 +18,17 @@ local p = game:GetService("Players").LocalPlayer
 
 ts:Teleport(game.PlaceId, p)
 end)
-Section:NewTextBox("Name esp on player so u can see them invisique", "esp", function(txt4)
+Section:NewButton("Auto remove compulsion", "x", function()
+    while true do
+    local Player = game.Players.LocalPlayer.Name
+    game.Workspace.Live[Player].disableMovement:Destroy()
+    game.Workspace.Live[Player].disableMagic:Destroy()
+    game.Workspace.Live[Player].disablePunching:Destroy()
+    game.Workspace.Live[Player].disableSiphoning:Destroy()
+    game.Workspace.Live[Player].disable:Destroy()
+    end
+end)
+Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
     local plr = game:GetService("Workspace").Live
 local target = plr[(txt4)]
 local targett = target.Name
