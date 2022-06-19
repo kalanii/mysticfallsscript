@@ -19,14 +19,14 @@ local p = game:GetService("Players").LocalPlayer
 ts:Teleport(game.PlaceId, p)
 end)
 Section:NewButton("Auto remove compulsion", "x", function()
-    while true do
+game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disableMovement:Destroy()
     game.Workspace.Live[Player].disableMagic:Destroy()
     game.Workspace.Live[Player].disablePunching:Destroy()
     game.Workspace.Live[Player].disableSiphoning:Destroy()
     game.Workspace.Live[Player].disable:Destroy()
-    end
+    end)
 end)
 Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
     local plr = game:GetService("Workspace").Live
@@ -118,12 +118,16 @@ end);
 Section:NewButton("Tp to hotel hira!!!", "secret room x", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-377.636353, -267.451416, -4889.46582, 0.997956812, -0.0327007547, -0.0548902005, 0.033344958, 0.99938494, 0.0108610736, 0.0545012802, -0.0126692066, 0.998433352)
 end)
-Section:NewButton("loopdelete venom", "x", function()
-    local Player = game.GetService("Players").LocalPlayer.Name
-    while true do
+Section:NewButton("delete venom", "x", function()
+local Player = game.Players.LocalPlayer
+	local Character = Player.Character
+	local Humanoid = Character.Humanoid
 
-game.Workspace[Player].WerewolfVenom:Destroy()
-end
+	local Bite = Character:WaitForChild("WerewolfVenom")
+	Bite:Destroy()
+
+
+
 end)
 Section:NewButton("DarkDex", "if u dont know what it is, don't use it", function()
     -- Cloneref support (adds support for JJsploit/Temple/Electron and other sploits that don't have cloneref or really shit versions of it.)
@@ -193,14 +197,14 @@ end
 Load(Bypassed_Dex)
     end)
 Section:NewButton("vamp og immortal", "xx", function()
-while true do
+game:GetService"RunService".RenderStepped:Connect(function()
         local args = {
             [1] = false
         }
 
         game:GetService("Players").LocalPlayer.Character.BurnInSun.Control:FireServer(unpack(args))
         wait(0)
-    end
+    end)
 
 
 --vamp immortal ate slayed devoured
@@ -233,6 +237,15 @@ local parent = game.Workspace.Live[Player]
 local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Hestia"
+end)
+Section2:NewButton("Puts channeling in ur folder", "Hestia perks ate", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+local className = "Part"
+local parent = game.Workspace.Live[Player]
+local part = Instance.new(className, parent)
+
+game.Workspace.Live[Player]:WaitForChild("Part").Name = "Channeling"
 end)
 Section:NewButton("run like a vamp", "ate", function()
 local Player = game:GetService("Players").LocalPlayer.Name
@@ -988,10 +1001,10 @@ end)
 end)
 Section:NewButton("Loopdelete channel", "Deletes ur channel so u can have multiple ones", function()
     local Player = game.Players.LocalPlayer.Name
-game:GetService"RunService".RenderStepped:Connect(function()
+while true do
  local channel = game.Workspace.Live[Player].Channeling
  channel:Destroy()
-    end)
+    end
 end)
 Section:NewButton("Loopdelete Acting", "makes it so u can pain and do spells at same time", function()
     local Player = game.Players.LocalPlayer.Name
