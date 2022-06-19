@@ -40,27 +40,6 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-end)Section:NewButton("Siphon All energy", "", function()
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
 local args = {
     [1] = "SelfSiphon"
 }
