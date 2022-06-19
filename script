@@ -9,48 +9,46 @@ local Section = Tab:NewSection("Main stuff purrr")
 Section:NewButton("Antiban", "Protects you from autoban x", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kwaibanana/OpenSource/772ff4369644973f4fd6da1fcec66f4f5f98f76c/anti%20ban", true))()
 end)
-Section:NewButton("Siphon All energy", "", function()
-local args = {
-    [1] = "SelfSiphon"
-}
+Section:NewButton("Rejoin", "rejoin the game", function()
+    local ts = game:GetService("TeleportService")
 
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
+local p = game:GetService("Players").LocalPlayer
 
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
+ 
 
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
-local args = {
-    [1] = "SelfSiphon"
-}
-
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+ts:Teleport(game.PlaceId, p)
 end)
+Section:NewTextBox("Name esp on player so u can see them invisique", "esp", function(txt4)
+    local plr = game:GetService("Workspace").Live
+local target = plr[(txt4)]
+local targett = target.Name
+if target then
+local a = Instance.new("BillboardGui",target)
+a.Size = UDim2.new(3,0, 3,0)
+a.Name = "A"
+a.AlwaysOnTop = true
+local b = Instance.new("Frame",a)
+   b.Size = UDim2.new(1,0, 1,0)
+   b.BackgroundTransparency = 0.4
+b.BorderSizePixel = 0
+local c = Instance.new("TextLabel",b)
+c.Text = targett
+c.Size = UDim2.new(1,0, 1,0)
+c.BackgroundTransparency = 1
+c.BorderSizePixel = 0
+end
+    end)
+Section:NewButton("Respawn as mortal", "it respawns u and makes u a mortal in seconds", function()
+    local LocalPlayer = game.Players.LocalPlayer
+	local Character = LocalPlayer.Character
+	local Humanoid = Character.Humanoid
+	local Mouse = LocalPlayer:GetMouse()
+	local Respawn = game:GetService("ReplicatedStorage").Events.Respawn
+	Respawn:FireServer()
+	wait(1)
+	local Morph = game:GetService("ReplicatedStorage").Events.Morph
+	Morph:FireServer("Mortal")
+    end)
 Section:NewButton("get werewolf bite when ur a vamp", "read the title x", function()
     -- Decompiled with the Synapse X Luau decompiler.
 
@@ -234,6 +232,21 @@ local parent = game.Workspace.Live[Player]
 local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Vampire"
+end)
+Section:NewButton("Run like a wolf", "run away x", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+local className = "Part"
+local parent = game.Workspace.Live[Player]
+local part = Instance.new(className, parent)
+
+game.Workspace.Live[Player]:WaitForChild("Part").Name = "Werewolf"
+end)
+Section:NewButton("Run normally", "run away x", function()
+local Player = game:GetService("Players").LocalPlayer.Name
+
+game.Workspace.Live[Player]:WaitForChild("Vampire"):Destroy()
+game.Workspace.Live[Player]:WaitForChild("Werewolf"):Destroy()
 end)
 Section:NewButton("See ghosts", "yah", function()
 local Player = game:GetService("Players").LocalPlayer.Name
