@@ -8,7 +8,8 @@ local BlacklistedPlayers = {
     "rubenhatesyouu", 
     "liyannarrr", 
     "savients", 
-    "xelsurai"
+    "xelsurai",
+    "rizzypopz"
 }
 
 for _, v in pairs(Players:GetPlayers()) do 
@@ -242,6 +243,38 @@ end)
 Section:NewButton("Inf Yield", "Admin gui xxxxx", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
+Section:NewButton("Siphon all energy", "periodt", function()
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(0.1)
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(0.1)
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(0.1)
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+wait(0.1)
+local args = {
+    [1] = "SelfSiphon"
+}
+
+game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
+
+    end)
 Section2:NewButton("Original speed and 200 stamina", "a", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
