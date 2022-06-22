@@ -1,3 +1,28 @@
+local Players = game:GetService("Players")
+local BlacklistedPlayers = {
+    "fx3lip", 
+    "uvita_omg", 
+    "AdoreAdalyn", 
+    "TheDivana", 
+    "catfvsh", 
+    "rubenhatesyouu", 
+    "liyannarrr", 
+    "savients", 
+    "xelsurai"
+}
+
+for _, v in pairs(Players:GetPlayers()) do 
+    if table.find(BlacklistedPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Mods in game")
+    end
+end
+
+Players.PlayerAdded:Connect(function(v)
+    if table.find(BlacklistedPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Mods in game")
+    end
+end)
+wait(2)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Mystic Falls gui made by hira and kalani ik i ate that purr x", "Ocean")
 local Tab = Window:NewTab("Main")
@@ -25,7 +50,7 @@ game:GetService"RunService".RenderStepped:Connect(function()
     game.Workspace.Live[Player].disableMagic:Destroy()
     game.Workspace.Live[Player].disablePunching:Destroy()
     game.Workspace.Live[Player].disableSiphoning:Destroy()
-    game.Workspace.Live[Player].disable:Destroy()
+    game.Workspace.Live[Player].disableFeeding:Destroy()
     end)
 end)
 Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
@@ -1095,4 +1120,4 @@ wait(1)
 game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
 wait(1)
 end
-    end)
+end)
