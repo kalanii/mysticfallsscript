@@ -37,12 +37,10 @@ Section:NewButton("Antiban", "Protects you from autoban x", function()
 end)
 Section:NewButton("Rejoin", "rejoin the game", function()
     local ts = game:GetService("TeleportService")
-
-local p = game:GetService("Players").LocalPlayer
-
- 
-
-ts:Teleport(game.PlaceId, p)
+    local p = game:GetService("Players").LocalPlayer
+    
+    
+    ts:Teleport(game.PlaceId, p)
 end)
 Section:NewButton("Auto remove compulsion", "x", function()
 game:GetService"RunService".RenderStepped:Connect(function()
@@ -239,6 +237,14 @@ Section:NewButton("Immortal for witches", "So you won't die to random flops x", 
     local Player = game.Players.LocalPlayer.Name
         local comm = game.Workspace.Live[Player].Immortality.Comm
         comm:Destroy()
+        wait(1)
+        if game.Workspace.Live[Player].Humanoid.Health < 2 then
+local args = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").Events.FallDamage:FireServer(unpack(args))
+end
 end)
 Section:NewButton("Inf Yield", "Admin gui xxxxx", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -377,7 +383,17 @@ end)
 Section:NewButton("Respawn", "Takes u to character selection", function()
     game:GetService("ReplicatedStorage").Events.Respawn:FireServer()
 end)
+Section:NewButton("say !re to respawn", "a", function()
+    local Players = game:GetService("Players")
+local Respawn = game:GetService("ReplicatedStorage").Events.Respawn
+local function chatted(msg)
+    if msg == "!re" then
+	Respawn:FireServer()
+    end
+end
 
+Players.LocalPlayer.Chatted:Connect(chatted)
+    end)
 Section:NewButton("Buff witchpowers 1x (spam if u want)", "Buffs spells like incendia but takes more magic", function()
     -- Decompiled with the Synapse X Luau decompiler.
 
@@ -1063,6 +1079,11 @@ while true do
  local channel = game.Workspace.Live[Player].Channeling
  channel:Destroy()
     end
+end)
+Section:NewButton("delete channel", "Deletes ur channel so u can have multiple ones", function()
+    local Player = game.Players.LocalPlayer.Name
+ local channel = game.Workspace.Live[Player].Channeling
+ channel:Destroy()
 end)
 Section:NewButton("Loopdelete Acting", "makes it so u can pain and do spells at same time", function()
     local Player = game.Players.LocalPlayer.Name
