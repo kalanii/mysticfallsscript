@@ -8,8 +8,7 @@ local BlacklistedPlayers = {
     "rubenhatesyouu", 
     "liyannarrr", 
     "savients", 
-    "xelsurai",
-    "rizzypopz"
+    "xelsurai"
 }
 
 for _, v in pairs(Players:GetPlayers()) do 
