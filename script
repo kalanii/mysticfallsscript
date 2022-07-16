@@ -45,6 +45,13 @@ Section:NewButton("Rejoin", "rejoin the game", function()
     
     ts:Teleport(game.PlaceId, p)
 end)
+Section:NewButton("tp to sybil fork", "x", function()
+local staff = game:GetService("Workspace")["Staff of Arcadius"].Handle
+
+local currentcframe = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+currentcframe.CFrame = staff.CFrame
+end)
 Section:NewButton("Auto remove compulsion", "x", function()
 game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
