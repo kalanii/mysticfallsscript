@@ -49,18 +49,22 @@ Section:NewButton("Auto remove compulsion", "x", function()
 game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disableMovement:Destroy()
-    wait(1)
+game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disableMagic:Destroy()
-    wait(1)
+game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disablePunching:Destroy()
-    wait(1)
+game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disableSiphon:Destroy()
-    wait(1)
+game:GetService"RunService".RenderStepped:Connect(function()
     local Player = game.Players.LocalPlayer.Name
     game.Workspace.Live[Player].disableFeeding:Destroy()
+    end)
+    end)
+    end)
+    end)
     end)
 end)
 Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
