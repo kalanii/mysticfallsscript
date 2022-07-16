@@ -32,7 +32,23 @@ local Section2 = Tab2:NewSection("Faction stuffs x")
 local Section3 = Tab3:NewSection("Keybindssss")
 local Section = Tab:NewSection("Main stuff purrr")
 Section:NewButton("Antiban", "Protects you from autoban x", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kwaibanana/OpenSource/772ff4369644973f4fd6da1fcec66f4f5f98f76c/anti%20ban", true))()
+    local getrawmetatable = getrawmetatable or debug.getmetatable
+local make_writeable = make_writeable or setreadonly or changereadonly or change_writeable
+make_writeable(getrawmetatable(game), false)
+local backup = getrawmetatable(game).__namecall
+getrawmetatable(game).__namecall = function(u, ...)
+   local m = ({...})[select('#', ...)]
+   local packed = {...}
+   local a = {}
+   for i = 1, #packed - 1 do
+       a[i] = packed[i]
+   end
+   if m == 'Kick' then
+       warn('Kick attempt at ' .. os.time() .. ' (' .. tostring(unpack(a)) .. ')')
+       return true
+   end
+   return backup and backup(u, ...) or u[m](u, unpack(a))
+end
 end)
 Section:NewButton("Rejoin", "rejoin the game", function()
     local ts = game:GetService("TeleportService")
