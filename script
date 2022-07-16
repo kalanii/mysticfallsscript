@@ -352,7 +352,7 @@ local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Astralis"
 end)
-Section2:NewButton("Puts veraux in ur folder (no perks)", "veraux perks didn't eat x", function()
+Section2:NewButton("Puts veraux in ur folder (heal if synapse)", "veraux perks didn't eat x", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
 local className = "Part"
@@ -360,6 +360,105 @@ local parent = game.Workspace.Live[Player]
 local part = Instance.new(className, parent)
 
 game.Workspace.Live[Player]:WaitForChild("Part").Name = "Veraux"
+wait(0.5)
+game:GetService("Workspace").herouxBarrier.Transparency = 0.5
+game:GetService("Workspace").herouxBarrier.CanCollide = false
+wait(0.5)
+local v6 = game:GetService("ReplicatedStorage")
+local v9 = v6:WaitForChild("Events")
+local v12 = game:GetService("Players")
+local v13 = v12.LocalPlayer
+local v14 = v13.Character
+local v17 = v14:WaitForChild("Humanoid")
+local v19 = v13:GetMouse()
+local v22 = require(v6.Check)
+local v25 = v14:WaitForChild("Energy")
+local v43 = false
+game:GetService("UserInputService").InputBegan:Connect(function(p2, p3)
+    if p3 then
+        local v46 = p2.KeyCode
+        local v47 = Enum.KeyCode.E
+        if v46 == v47 then
+            v46 = function(p1)
+                local v30, v31 = v12:GetPlayers()
+                for v41, v42 in next, v30, v31 do
+                    local v32 = v33.Character
+                    if not v32 then
+                        local v34 = v19
+                        v32 = v34.Target
+                        if not v32 then
+                            v34 = v19
+                            v32 = v34.Target
+                            if not v32:IsDescendantOf(v33.Character) then
+                                if p1 >= v33:DistanceFromCharacter(v14.Head.Position) then
+                                    return v33
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            v47 = 5
+            local v48 = v46(v47)
+            if not v48 then
+                local v49 = _G
+                local v50 = v49.Debounce
+                if v50 then
+                    v50 = v43
+                    if v50 then
+                        v49 = v25
+                        v50 = v49.Value
+                        v49 = 0
+                        if v50 >= v49 then
+                            v50 = v22
+                            v49 = v14
+                            local v51 = v50(v49)
+                            if not v51 then
+                                v51 = v22
+                                local v53 = v51(v48.Character)
+                                if not v53 then
+                                    v53 = v14
+                                    local v55 = v53:FindFirstChild("Acting")
+                                    if v55 then
+                                        v55 = v48.Character
+                                        local v57 = v55:FindFirstChild("vampReject")
+                                        if v57 then
+                                            v57 = v48.Character
+                                            local v59 = v57:FindFirstChild("Vampire")
+                                            if not v59 then
+                                                v59 = v48.Character
+                                                local v61 = v59:FindFirstChild("Vampire")
+                                                if not v61 then
+                                                    v61 = v14
+                                                    local v63 = v61:FindFirstChild("HybridSiring")
+                                                    if v63 then
+                                                        v63 = v14
+                                                        local v65 = v63:FindFirstChild("Veraux")
+                                                        if not v65 then
+                                                            v65 = true
+                                                            v43 = v65
+                                                            v65 = v9.Vampire
+                                                            local v68 = {}
+                                                            v68[1] = v48.Character
+                                                            v65:FireServer("Heal", v68)
+                                                            wait(7)
+                                                            v43 = false
+                                                        end
+                                                        return 
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
 end)
 Section2:NewButton("Puts laveau in ur folder (no perks)", "laveau perks didn't eat", function()
 local Player = game:GetService("Players").LocalPlayer.Name
