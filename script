@@ -5,7 +5,7 @@ local BlacklistedPlayers = {
     "AdoreAdalyn", 
     "TheDivana", 
     "catfvsh", 
-    "rubenhatesyouu", 
+    "rubenhatesyouu",
     "liyannarrr", 
     "savients", 
     "xelsurai"
@@ -74,6 +74,18 @@ game:GetService"RunService".RenderStepped:Connect(function()
     end)
     end)
 end)
+Section:NewButton("stake all around you (read desc)", "have to have stake in hand", function()
+    Players = game:GetService("Players")
+for i, player in pairs(Players:GetPlayers()) do
+local args = {
+    [1] = player.Character,
+    [2] = "Original"
+}
+
+game:GetService("ReplicatedStorage").Events.Stake:FireServer(unpack(args))
+end
+
+    end)
 Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
     local plr = game:GetService("Workspace").Live
 local target = plr[(txt4)]
