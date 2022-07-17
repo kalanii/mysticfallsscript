@@ -1,3 +1,4 @@
+wait()
 local Players = game:GetService("Players")
 local BlacklistedPlayers = {
     "fx3lip", 
@@ -75,15 +76,21 @@ game:GetService"RunService".RenderStepped:Connect(function()
     end)
 end)
 Section:NewButton("stake all around you (read desc)", "have to have stake in hand", function()
-    Players = game:GetService("Players")
-for i, player in pairs(Players:GetPlayers()) do
-local args = {
-    [1] = player.Character,
-    [2] = "Original"
-}
+	local players = game.Workspace.Live
 
-game:GetService("ReplicatedStorage").Events.Stake:FireServer(unpack(args))
-end
+	for _,player in pairs (players:GetChildren()) do
+		local link = game.Players:GetPlayerFromCharacter(player)
+		if player:FindFirstChild("Humanoid") then
+			if  link == game.Players.LocalPlayer then
+				return
+			else
+				local A_1 = player
+				local A_2 = "Original"
+				local Event = game:GetService("ReplicatedStorage").Events.Stake
+				Event:FireServer(A_1, A_2)
+			end
+		end
+    end
 
     end)
 Section:NewTextBox("Name esp", "type in user u can see them invisique", function(txt4)
