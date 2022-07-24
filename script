@@ -32,23 +32,24 @@ local Tab3 = Window:NewTab("Keybinds")
 local Section2 = Tab2:NewSection("Faction stuffs x")
 local Section3 = Tab3:NewSection("Keybindssss")
 local Section = Tab:NewSection("Main stuff purrr")
+Section:NewButton("press to get up", "", function()
+    local args = {
+    [1] = 1
+}
+
+game:GetService("ReplicatedStorage").Events.FallDamage:FireServer(unpack(args))
+    end)
 Section:NewButton("unblur", "", function()
-    while true do
-    game:GetService("Players").LocalPlayer.PlayerGui.Info.Frame = false
-    wait(1)
-	game:GetService("Lighting").Blur.Enabled = false
-	wait(1)
-    end
+game:GetService("Players").LocalPlayer.PlayerGui.Info.Enabled = false
+game:GetService("Players").LocalPlayer.PlayerGui.Info.ResetOnSpawn = false
+game:GetService("Lighting").Blur.Enabled = false
     end)
     Section:NewButton("punch/push away compulsion and feed", "a", function()
-    local playername = game.Player.LocalPlayer.Name 
-while true do
-    if game.Workspace.Live[playername].Frozen or game.Workspace.Live[playername].fedOn or game.Workspace.Live[playername].beingCompelled then
-    game.Workspace.Live[playername].Acting:Destroy()
-    game.Workspace.Live[playername].freezeWeld:Destroy()
-    end
-    wait(1)
-    end
+local Player = game.Players.LocalPlayer.Name
+game:GetService"RunService".RenderStepped:Connect(function()
+ local channel = game.Workspace.Live[Player].Acting
+ channel:Destroy()
+    end)
     end)
     
    Section:NewButton("open chat like normal game", "", function()
@@ -293,14 +294,17 @@ end
 Load(Bypassed_Dex)
     end)
 Section:NewButton("vamp og immortal", "xx", function()
-game:GetService"RunService".RenderStepped:Connect(function()
+local FRMultiplier = 4
+game:GetService("RunService").HeartBeat:Connect(function(delta)
+    delta = delta/FRMultiplier
+    for i=1,FRMultiplier do
         local args = {
             [1] = false
         }
 
-        game:GetService("Players").LocalPlayer.Character.BurnInSun.Control:FireServer(unpack(args))
-        wait(0)
-    end)
+       game:GetService("Players")LocalPlayer.Character.BurnInSun.Control:FireServer(unpack(args))
+    end
+   end)
 
 
 --vamp immortal ate slayed devoured
@@ -405,7 +409,8 @@ Section:NewButton("Run normally", "run away x", function()
 local Player = game:GetService("Players").LocalPlayer.Name
 
 game.Workspace.Live[Player]:WaitForChild("Vampire"):Destroy()
-game.Workspace.Live[Player]:WaitForChild("Werewolf"):Destroy()
+wait(1)
+game:GetService("Workspace").Live[Player].WaitForChild("Werewolf"):Destroy()
 end)
 Section:NewButton("See ghosts", "yah", function()
 local Player = game:GetService("Players").LocalPlayer.Name
