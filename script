@@ -1,3 +1,16 @@
+local Player = game.Players.LocalPlayer
+local Character = Player.Character
+local Rep = game:GetService("ReplicatedStorage")
+local Ban = Rep.Events.Ban
+local BanClient = Rep.Events.BanClient
+local ModBan = Rep.Events.ModBan
+
+ModBan:Destroy()
+BanClient:Destroy()
+Ban:Destroy()
+
+
+wait(2)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Mystic Falls gui made by hira and kalani ik i ate that purr x", "Ocean")
 local Tab = Window:NewTab("Main")
@@ -6,30 +19,187 @@ local Tab3 = Window:NewTab("Keybinds")
 local Section2 = Tab2:NewSection("Faction stuffs x")
 local Section3 = Tab3:NewSection("Keybindssss")
 local Section = Tab:NewSection("Main stuff purrr")
-Section:NewButton("delfan all ", "", function()
-    	local players = game.Workspace.Live
 
-	for _,player in pairs (players:GetChildren()) do
-		local link = game.Players:GetPlayerFromCharacter(player).Character
-		if player:FindFirstChild("Humanoid") then
-			if  link == game.Players.LocalPlayer.Character then
-				return
+Section:NewButton("burn spell (click info)", "ignis ubique", function()
+    	local Player = game.Players.LocalPlayer
+	local Character = Player.Character
+	local Humanoid = Character.Humanoid
+	local UserInputService = game:GetService("UserInputService")
+	local mouse = Player:GetMouse()
+	--local Debounce = true
+	local db = true
+
+	Player.Chatted:Connect(function(chat)
+		local low = string.lower(chat)
+		if string.find(low, "ignis ubique") then
+
+			local Plr = game.Players.LocalPlayer
+			for i, Player in pairs (game.Players:GetPlayers()) do
+
+				if Player.Character ~= nil and Player ~= Plr then
+					local mag = (Player.Character.UpperTorso.Position - Plr.Character.UpperTorso.Position).magnitude
+					if mag < 15 then
+						local Target = Player.Character or Player.CharacterAdded:Wait()
+
+						local A1 = "Magic"
+						local A2 = 
+							{
+								[1] = "FireSpell", 
+								[2] = Target
+							}
+						local Event = game:GetService("ReplicatedStorage").Events.Witch
+						Event:FireServer(A1, A2)
+
+					end
+				end
+			end
+		end
+	end)
+	end)
+Section:NewButton("feed siphon and heall xx", "", function()
+    	local Player = game.Players.LocalPlayer
+	local Character = Player.Character
+
+
+	local A_1 = "Magic"
+	local A_2 = 
+		{
+			[1] = "Invisibility"
+		}
+	local Event = game:GetService("ReplicatedStorage").Events.Witch
+	Event:FireServer(A_1, A_2)
+
+	wait(1)
+
+	for i = 1, 9, 1 do
+
+		local A_1 = "SelfSiphon"
+		local Event = game:GetService("ReplicatedStorage").Events.Witch
+		Event:FireServer(A_1)
+
+	end
+
+	for i = 1, 4, 1 do
+
+		local A_1 = "Feed"
+		local A_2 = 
+			{
+				[1] = Character
+			}
+		local Event = game:GetService("ReplicatedStorage").Events.Vampire
+		Event:FireServer(A_1, A_2)
+
+	end
+
+	wait(4)
+
+
+	local A_1 = "Heal"
+	local A_2 = 
+		{
+			[1] = Character
+		}
+	local Event = game:GetService("ReplicatedStorage").Events.Vampire
+	Event:FireServer(A_1, A_2)
+	end)
+Section:NewButton("inf stamina fatty run x", "", function()
+    	local Player = game.Players.LocalPlayer
+	local Character = Player.Character
+	local Stamina = Character:WaitForChild("Stamina")
+	local Max = Stamina.Max
+
+	Max.Value = 10000000000
+	wait()
+	Stamina.Value = 10000000000
+    end)
+Section:NewButton("snap as wolf", "", function()
+    local Player = game:GetService("Players").LocalPlayer.Name
+
+function SCRIPT_JPEX75_FAKESCRIPT()
+getfenv().script = Instance.new('LocalScript', game:GetService("Workspace").Live[Player]) -- Change this to where you want the LocalScript to be.
+
+-- Insert your script here
+
+
+-- Decompiled with the Synapse X Luau decompiler.
+
+local l__ReplicatedStorage__1 = game:GetService("ReplicatedStorage");
+local l__Players__2 = game:GetService("Players");
+local l__LocalPlayer__3 = l__Players__2.LocalPlayer;
+local l__Character__4 = l__LocalPlayer__3.Character;
+local l__Humanoid__5 = l__Character__4:WaitForChild("Humanoid");
+local l__mouse__1 = l__LocalPlayer__3:GetMouse();
+local function u2(p1)
+	local l__next__6 = next;
+	local v7, v8 = l__Players__2:GetPlayers();
+	while true do
+		local v9, v10 = l__next__6(v7, v8);
+		if not v9 then
+			break;
+		end;
+		v8 = v9;
+		if v10.Character and l__mouse__1.Target and l__mouse__1.Target:IsDescendantOf(v10.Character) then
+			if v10:DistanceFromCharacter(l__Character__4.Head.Position) <= p1 then
+				return v10;
 			else
-local args = {
-    [1] = "Magic",
-    [2] = {
-        [1] = "TelekineticHeart",
-        [2] = player
-    }
-}
+				return;
+			end;
+		end;	
+	end;
+end;
+local l__Energy__3 = l__Character__4:WaitForChild("Energy");
+local u4 = require(l__ReplicatedStorage__1.Check);
+local u5 = false;
+local l__Events__6 = l__ReplicatedStorage__1:WaitForChild("Events");
+game:GetService("UserInputService").InputBegan:Connect(function(p2, p3)
+	if not p3 and p2.KeyCode == Enum.KeyCode.V then
+		local v11 = u2(5);
+		if v11 and not _G.Debounce and l__Energy__3.Value >= 50 and u4(l__Character__4) and u4(v11.Character) and not l__Character__4:FindFirstChild("Acting") and not v11.Character:FindFirstChild("vampReject") then
+			if l__Character__4:FindFirstChild("Debounce") then
+				return;
+			end;
+			local v12 = Instance.new("BoolValue");
+			v12.Name = "Debounce";
+			v12.Parent = l__Character__4;
+			game:GetService("Debris"):AddItem(v12, 2);
+			u5 = true;
+			l__Events__6.Vampire:FireServer("NeckSnap", { v11.Character });
+			wait(2);
+			u5 = false;
+		end;
+	end;
+end);
 
-game:GetService("ReplicatedStorage").Events.Witch:FireServer(unpack(args))
 
+end
+coroutine.resume(coroutine.create(SCRIPT_JPEX75_FAKESCRIPT))
+
+game.Workspace.Live[Player].LocalScript.Name = "NeckSnap" -- If you need to change the name back to the original one.
+
+    end)
+Section:NewButton("delfan all ", "", function()
+	local Plr = game.Players.LocalPlayer
+
+	for i, Player in pairs (game.Players:GetPlayers()) do
+		if Player.Character ~= nil and Player ~= Plr then
+			local mag = (Player.Character.UpperTorso.Position - Plr.Character.UpperTorso.Position).magnitude
+			if mag < 999999 then
+				local Target = Player.Character or Player.CharacterAdded:Wait()
+
+				local A_1 = "Magic"
+				local A_2 = 
+					{
+						[1] = "TelekineticHeart",
+						[2] = Target
+					}
+				local Event = game:GetService("ReplicatedStorage").Events.Witch
+				Event:FireServer(A_1, A_2)
 
 
 			end
 		end
-	    end
+	end
+
     end)
 Section:NewButton("press to get up", "", function()
     local args = {
@@ -52,20 +222,16 @@ game:GetService"RunService".RenderStepped:Connect(function()
     end)
     
    Section:NewButton("open chat like normal game", "", function()
-    while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait() end
+while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait() end
 
 local chatSettings = require(game:GetService("Chat").ClientChatModules.ChatSettings)
 local chatFrame = game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame
 
-chatSettings.WindowResizable = true
-chatSettings.WindowDraggable = true
-
-chatFrame.ChatChannelParentFrame.Visible = true
-chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFram.ChatChannelParentFrame.Size.Y)
-
-wait(2)
 chatSettings.WindowResizable = false
 chatSettings.WindowDraggable = false
+
+chatFrame.ChatChannelParentFrame.Visible=true
+chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
     end)
 Section:NewButton("Antiban", "Protects you from autoban x", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kalanii/antiban/main/script"))()
@@ -441,101 +607,58 @@ wait(0.5)
 game:GetService("Workspace").herouxBarrier.Transparency = 0.5
 game:GetService("Workspace").herouxBarrier.CanCollide = false
 wait(0.5)
-local v6 = game:GetService("ReplicatedStorage")
-local v9 = v6:WaitForChild("Events")
-local v12 = game:GetService("Players")
-local v13 = v12.LocalPlayer
-local v14 = v13.Character
-local v17 = v14:WaitForChild("Humanoid")
-local v19 = v13:GetMouse()
-local v22 = require(v6.Check)
-local v25 = v14:WaitForChild("Energy")
-local v43 = false
+local Player = game:GetService("Players").LocalPlayer.Name
+
+function SCRIPT_JPEX75_FAKESCRIPT()
+getfenv().script = Instance.new('LocalScript', game:GetService("Workspace").Live[Player]) -- Change this to where you want the LocalScript to be.
+
+-- Insert your script here
+
+
+-- Decompiled with the Synapse X Luau decompiler.
+
+local l__ReplicatedStorage__1 = game:GetService("ReplicatedStorage");
+local l__Players__2 = game:GetService("Players");
+local l__LocalPlayer__3 = l__Players__2.LocalPlayer;
+local l__Character__4 = l__LocalPlayer__3.Character;
+local l__Humanoid__5 = l__Character__4:WaitForChild("Humanoid");
+local l__mouse__1 = l__LocalPlayer__3:GetMouse();
+local function u2(p1)
+	local l__next__6 = next;
+	local v7, v8 = l__Players__2:GetPlayers();
+	while true do
+		local v9, v10 = l__next__6(v7, v8);
+		if not v9 then
+			break;
+		end;
+		v8 = v9;
+		if v10.Character and l__mouse__1.Target and (l__mouse__1.Target:IsDescendantOf(v10.Character) and v10:DistanceFromCharacter(l__Character__4.Head.Position) <= p1) then
+			return v10;
+		end;	
+	end;
+end;
+local u3 = false;
+local l__Energy__4 = l__Character__4:WaitForChild("Energy");
+local u5 = require(l__ReplicatedStorage__1.Check);
+local l__Events__6 = l__ReplicatedStorage__1:WaitForChild("Events");
 game:GetService("UserInputService").InputBegan:Connect(function(p2, p3)
-    if p3 then
-        local v46 = p2.KeyCode
-        local v47 = Enum.KeyCode.E
-        if v46 == v47 then
-            v46 = function(p1)
-                local v30, v31 = v12:GetPlayers()
-                for v41, v42 in next, v30, v31 do
-                    local v32 = v33.Character
-                    if not v32 then
-                        local v34 = v19
-                        v32 = v34.Target
-                        if not v32 then
-                            v34 = v19
-                            v32 = v34.Target
-                            if not v32:IsDescendantOf(v33.Character) then
-                                if p1 >= v33:DistanceFromCharacter(v14.Head.Position) then
-                                    return v33
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-            v47 = 5
-            local v48 = v46(v47)
-            if not v48 then
-                local v49 = _G
-                local v50 = v49.Debounce
-                if v50 then
-                    v50 = v43
-                    if v50 then
-                        v49 = v25
-                        v50 = v49.Value
-                        v49 = 0
-                        if v50 >= v49 then
-                            v50 = v22
-                            v49 = v14
-                            local v51 = v50(v49)
-                            if not v51 then
-                                v51 = v22
-                                local v53 = v51(v48.Character)
-                                if not v53 then
-                                    v53 = v14
-                                    local v55 = v53:FindFirstChild("Acting")
-                                    if v55 then
-                                        v55 = v48.Character
-                                        local v57 = v55:FindFirstChild("vampReject")
-                                        if v57 then
-                                            v57 = v48.Character
-                                            local v59 = v57:FindFirstChild("Vampire")
-                                            if not v59 then
-                                                v59 = v48.Character
-                                                local v61 = v59:FindFirstChild("Vampire")
-                                                if not v61 then
-                                                    v61 = v14
-                                                    local v63 = v61:FindFirstChild("HybridSiring")
-                                                    if v63 then
-                                                        v63 = v14
-                                                        local v65 = v63:FindFirstChild("Veraux")
-                                                        if not v65 then
-                                                            v65 = true
-                                                            v43 = v65
-                                                            v65 = v9.Vampire
-                                                            local v68 = {}
-                                                            v68[1] = v48.Character
-                                                            v65:FireServer("Heal", v68)
-                                                            wait(7)
-                                                            v43 = false
-                                                        end
-                                                        return 
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-end)
+	if not p3 and p2.KeyCode == Enum.KeyCode.E then
+		local v11 = u2(5);
+		if v11 and not _G.Debounce and not u3 and l__Energy__4.Value >= 0 and u5(l__Character__4) and u5(v11.Character) and not l__Character__4:FindFirstChild("Acting") and not v11.Character:FindFirstChild("vampReject") and (not v11.Character:FindFirstChild("Vampire") or v11.Character:FindFirstChild("Vampire") and (l__Character__4:FindFirstChild("HybridSiring") or l__Character__4:FindFirstChild("Veraux"))) then
+			u3 = true;
+			l__Events__6.Vampire:FireServer("Heal", { v11.Character });
+			wait(7);
+			u3 = false;
+		end;
+	end;
+end);
+
+
+end
+coroutine.resume(coroutine.create(SCRIPT_JPEX75_FAKESCRIPT))
+
+game.Workspace.Live[Player].LocalScript.Name = "Heal" -- If you need to change the name back to the original one.
+
 end)
 Section2:NewButton("Puts laveau in ur folder (no perks)", "laveau perks didn't eat", function()
 local Player = game:GetService("Players").LocalPlayer.Name
